@@ -1,0 +1,62 @@
+<!-- src/views/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Reading Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Book Reading Tracker</h1>
+
+    <!-- Add Book Form -->
+    <form id="addBookForm" class="mb-8" action="/add-book" method='post'>
+      <label class="block mb-2" for="title">Title:</label>
+      <input class="w-full border p-2" type="text" id="title" name="title" required>
+
+      <label class="block mt-4 mb-2" for="author">Author:</label>
+      <input class="w-full border p-2" type="text" id="author" name="author" required>
+
+      <label class="block mt-4 mb-2" for="numberOfPages">Number of Pages:</label>
+      <input class="w-full border p-2" type="number" id="numberOfPages" name="numberOfPages" required>
+
+      <label class="block mt-4 mb-2" for="status">Status:</label>
+      <select class="w-full border p-2" id="status" name="status" required>
+        <option value="Read">Read</option>
+        <option value="Re-read">Re-read</option>
+        <option value="DNF">DNF</option>
+        <option value="Currently reading">Currently reading</option>
+        <option value="Returned Unread">Returned Unread</option>
+        <option value="Want to read">Want to read</option>
+      </select>
+
+      <label class="block mt-4 mb-2" for="price">Price:</label>
+      <input class="w-full border p-2" type="number" id="price" name="price" required>
+
+      <label class="block mt-4 mb-2" for="numberOfPagesRead">Number of Pages Read:</label>
+      <input class="w-full border p-2" type="number" id="numberOfPagesRead" name="numberOfPagesRead" required>
+
+      <label class="block mt-4 mb-2" for="format">Format:</label>
+      <select class="w-full border p-2" id="format" name="format" required>
+        <option value="Print">Print</option>
+        <option value="PDF">PDF</option>
+        <option value="Ebook">Ebook</option>
+        <option value="AudioBook">AudioBook</option>
+      </select>
+
+      <label class="block mt-4 mb-2" for="suggestedBy">Suggested By:</label>
+      <input class="w-full border p-2" type="text" id="suggestedBy" name="suggestedBy" required>
+
+      <label class="block mt-4 mb-2" for="finished">Finished:</label>
+      <input class="w-full border p-2" type="checkbox" id="finished" name="finished">
+
+      <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded">Add Book</button> 
+    </form>
+
+  </div>
+
+</body>
+</html>

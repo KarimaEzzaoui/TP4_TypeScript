@@ -1,0 +1,55 @@
+<!-- src/views/book-list.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Reading Tracker - Book List</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Book Reading Tracker </h1>
+    <!-- Global Section -->
+    <div class="mb-4">
+      <h2 class="text-xl font-bold mb-2">Global Stats</h2>
+      <!-- Count the number of finished books -->
+      <p>Total Books Finished: <%= books.filter(book => book.finished).length %></p>
+      
+      <p>Total Pages Read: <%= books.reduce((total, book) => total + book.numberOfPagesRead, 0) %></p>
+    </div>
+    <!-- Display Book List Here -->
+    <div id="bookList">
+      <h2 class="text-xl font-bold mb-2">Book List </h2>
+      <% books.forEach(book => { %>
+        <div class="border p-4 mb-4 rounded">
+          <h2 class="text-xl font-bold mb-2"><%= book.title %></h2>
+          <p>Author: <%= book.author %></p>
+          <p>Number of Pages: <%= book.numberOfPages %></p>
+          <p>Status: <%= book.status %></p>
+          <p>Price: <%= book.price %></p>
+          <p>Format: <%= book.format %></p>
+          <p>Suggested By: <%= book.suggestedBy %></p>
+          <p>Number Of Pages Read: <%= book.numberOfPagesRead %></p>
+          <!-- Add a form to update the number of pages read -->
+          <form method="post" action="/update-pages/<%= book._id %>">
+            <label for="newPages" class="block mt-2">Currently At:</label>
+            <input type="number" name="newPages" id="newPages" value="<%= book.numberOfPagesRead %>" required>
+            <button type="submit" class="mt-2 bg-blue-500 text-white p-2 rounded">Update</button>
+          </form>
+          <p>Percentage Read: <%= book.percentage.toFixed(2) %>%</p>
+          
+          <p>Finished: <%= book.finished ? '✔' : '✘' %></p>
+
+        </div>
+      <% }); %>
+    </div>
+
+    <!-- Add Link to Add Book Page --> 
+    <a href="/add-book" class="text-blue-500">Add a New Book</a>
+
+  </div>
+
+</body>
+</html>
